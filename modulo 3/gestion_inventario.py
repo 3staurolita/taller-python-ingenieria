@@ -47,3 +47,63 @@ def promedio_lecturas_por_id(inventario: List[Dict[str, object]], componente_id:
                 raise ValueError("Error al convertir lecturas a float: " + str(e))
             return sum(valores) / len(valores)
     raise ValueError(f"Componente con id '{componente_id}' no encontrado en el inventario")
+
+# -----------------------------
+# Análisis de Experimentos (Sets y Tuplas)
+# -----------------------------
+# IDs de experimentos exitosos (tuplas de (id_experimento, fecha))
+
+equipo_A: Set[Tuple[str, str]] = {
+    ("EXP-001", "2023-10-01"),
+    ("EXP-002", "2023-10-02"),
+    ("EXP-003", "2023-10-03"),
+}
+
+equipo_B: Set[Tuple[str, str]] = {
+    ("EXP-002", "2023-10-02"),
+    ("EXP-004", "2023-10-04"),
+    ("EXP-001", "2023-10-01"),
+}
+
+
+def imprimir_resultados_experimentos(a: Set[Tuple[str, str]], b: Set[Tuple[str, str]]):
+    interseccion = a & b
+    union = a | b
+    diferencia = a - b
+
+    print("\n--- Análisis de Experimentos ---")
+    print("Experimentos reportados por ambos (Intersección):")
+    if interseccion:
+        for exp in sorted(interseccion):
+            print("  -", exp)
+    else:
+        print("  (ninguno)")
+
+    print("\nTotal de experimentos exitosos únicos (Unión):", len(union))
+    for exp in sorted(union):
+        print("  -", exp)
+
+    print("\nExperimentos que hizo equipo_A pero no equipo_B (Diferencia):")
+    if diferencia:
+        for exp in sorted(diferencia):
+            print("  -", exp)
+    else:
+        print("  (ninguno)")
+
+
+# -----------------------------
+# Bloque principal: ejecución de ejemplos
+# -----------------------------
+if __name__ == "__main__":
+    # Promedio de lecturas para un id específico
+    buscado = "S-101"
+    try:
+        prom = promedio_lecturas_por_id(inventario, buscado)
+        print(f"Promedio de lecturas para el componente {buscado}: {prom:.3f}")
+    except ValueError as e:
+        print("Error:", e)
+
+    # Imprimir análisis de experimentos
+    imprimir_resultados_experimentos(equipo_A, equipo_B)
+
+    # Nota: cambiar los datos arriba si se desea probar con otros componentes o sets

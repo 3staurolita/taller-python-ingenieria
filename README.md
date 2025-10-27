@@ -9,3 +9,6 @@ Contiene la base de datos del inventario de componentes. Permite calcular el pro
 analisis_componentes.py
 
 Usa funciones lambda con filter() y map() para filtrar los sensores críticos del inventario (tipo “Sensor” y ubicación “Planta_Norte”) y obtener sus IDs.
+
+simulador_llenado_tanque.py 
+Simula una alerta de llenado de un tanque utilizando bucle while. 

@@ -107,3 +107,25 @@ if __name__ == "__main__":
     imprimir_resultados_experimentos(equipo_A, equipo_B)
 
     # Nota: cambiar los datos arriba si se desea probar con otros componentes o sets
+
+# Ejercicio 1 Modulo 4
+# Clasificador de Inventario 
+# Listas vacías
+sensores = []
+motores = []
+valvulas = []
+
+#Usamos el for
+for componente in inventario:
+    if componente["tipo"]== "Sensor":
+        sensores.append(componente["id"])
+    elif componente["tipo"] == "Motor":
+        motores.append(componente["id"])
+    elif componente["tipo"] == "Válvula":
+        valvulas.append(componente["id"])
+    else:
+        print(f"Tipo desconocido para el componente con ID {componente['id']}")
+#Imprimimos las listas que clasificamos
+print("Sensores:", sensores)
+print("Motores:", motores)
+print("Valvulas:", valvulas)
